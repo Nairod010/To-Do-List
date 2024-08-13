@@ -1,13 +1,3 @@
-# Template webpack project
-
-Template for future FE projects, kinda basic but this is the first version.
-
-## What it has
-- Webpack 5
-- Configs for development and production
-- CSS and images handling
-- Live reload 
-
 ## Usage
 
 1. Install dependencies:
