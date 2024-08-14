@@ -2,7 +2,7 @@
 
 1. Install dependencies:
 ```bash
-./setup.sh
+npm install
 ```
 2. Run dev:
 ```bash

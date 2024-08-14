@@ -1,9 +1,13 @@
 import './styles.css';
-import image from './assets/guts.jpg';
+import {builder} from './models';
 
-console.log('Webpack template is working!');
+const taskTest = builder.buildTask("hello1","whatever","whatever","whatever","whatever","whatever")
+const taskTest2 = builder.buildTask("hello2","whatever","whatever","whatever","whatever","whatever")
+const newProject = builder.buildProject("hello","whatever","whatever","whatever","whatever")
 
-const img = document.createElement('img');
-img.src = image;
-document.body.appendChild(img);
+newProject.addTasks(taskTest)
+newProject.addTasks(taskTest2)
+newProject.deleteTask(taskTest)
 
+console.log(taskTest);
+console.log(newProject);
