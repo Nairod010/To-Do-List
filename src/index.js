@@ -1,13 +1,11 @@
 import './styles.css';
 import {builder} from './models';
+import { elements } from './dom';
 
-const taskTest = builder.buildTask("hello1","whatever","whatever","whatever","whatever","whatever")
-const taskTest2 = builder.buildTask("hello2","whatever","whatever","whatever","whatever","whatever")
+const taskTest = builder.buildTask("title","startDate","endDate","priority","status","description")
 const newProject = builder.buildProject("hello","whatever","whatever","whatever","whatever")
 
-newProject.addTasks(taskTest)
-newProject.addTasks(taskTest2)
-newProject.deleteTask(taskTest)
+elements.createTask(taskTest)
 
 console.log(taskTest);
 console.log(newProject);

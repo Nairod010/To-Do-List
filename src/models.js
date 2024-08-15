@@ -33,14 +33,14 @@ class Project extends Item {
 }
 
 export const builder  = {
-    buildTask(title, startDate, endDate, priority, description, status){
+    buildTask(title, startDate, endDate, priority, status, description){
         const task =  new Task()
         task.title = title
         task.startDate = startDate
         task.endDate = endDate
         task.priority  = priority 
-        task.description  = description 
         task.status = status
+        task.description  = description 
 
         return task
     },
