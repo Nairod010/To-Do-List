@@ -28,7 +28,11 @@ class Project extends Item {
     }
 
     deleteTask(task){
-        this.tasks = this.tasks.filter((el) => el != task)
+        for(var i = 0; i < this.tasks.length; i++){
+            if(this.tasks[i].title === task){
+               this.tasks.splice(i,1)
+            }
+        }
     }
 }
 
