@@ -1,20 +1,16 @@
 import './styles.css';
-import {builder} from './models';
-import { elements } from './dom';
+import { build } from './models';
+import { display } from './display';
 
-const taskTest = builder.buildTask("title","startDate","endDate","priority","status","description")
-const taskTest2 = builder.buildTask("title2","startDate","endDate","priority","status","description")
-const taskTest3 = builder.buildTask("title3","startDate","endDate","priority","status","description")
-const taskTest4 = builder.buildTask("title4","startDate","endDate","priority","status","description")
-const newProject = builder.buildProject("hello","whatever","whatever","whatever","whatever")
+const newTodo = build.createTodo("title","01 01 2024", "description", "somewhere", "checkList")
+const newTodo2 = build.createTodo("title2","01 01 2024", "description", "somewhere", "checkList")
+const newProject = build.createProject("title", "01 02 2024")
 
 
-newProject.addTasks(taskTest)
-newProject.addTasks(taskTest2)
-newProject.addTasks(taskTest3)
-newProject.deleteTask("title")
-newProject.addTasks(taskTest4)
-elements.createTask(taskTest)
+newProject.addToDo(newTodo)
+newProject.addToDo(newTodo2)
+//newProject.deleteTodo(newTodo)
 
-console.log(taskTest);
-console.log(newProject);
+display.project(newProject)
+
+console.log(newProject)
