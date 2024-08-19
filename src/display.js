@@ -35,8 +35,8 @@ export const display = {
             todoPriority.textContent = project.todoList[i].priority
 
             const todoChecklist = document.createElement("div")
-            todoChecklist.classList.add("todo-checklist")
-            todoChecklist.textContent = project.todoList[i].checklist
+            todoChecklist.classList.add("todo-check")
+            todoChecklist.textContent = project.todoList[i].check
 
             todo.appendChild(todoTitle)
             todo.appendChild(todoDescription)
@@ -50,5 +50,16 @@ export const display = {
         currentProject.appendChild(title)
         currentProject.appendChild(dueDate)
         currentProject.appendChild(todoContainer)
+    },
+    fillNavigation(project){
+        const navbar = document.querySelector(".nav-bar")
+       
+        const newProject = document.createElement("button")        
+
+        newProject.classList.add(`project-${project.title}`)        
+
+        newProject.textContent = `${project.title}`
+        
+        navbar.appendChild(newProject)
     }
 }
