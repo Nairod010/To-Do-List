@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDoList</title>
 </head>
+
 <body>
     <div class="main-container">
-        <nav class="nav-bar"></nav>
+        <nav class="nav-bar">
+            <button class="add-project">Add Project</button>
+            <dialog id="new-project-form">
+                <label for="title">Title</label>
+                <input class="input-box" type="text" id="title" value="">
+                <button class="sumbit">Submit</button>
+                <button class="close">Close</button>
+            </dialog>
+        </nav>
         <div class="projects-container">
-        <div class="current-project"></div>
-        <button class="add">Add</button>
+            <div class="current-project"></div>
+            <button class="add">Add</button>
         </div>
     </div>
 </body>
-</html>
 
+</html>

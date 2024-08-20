@@ -1,14 +1,26 @@
 class todo{
-    constructor(title, description, dueDate, priority){
+    constructor(title){
         this.title = title
-        this.description = description
-        this.dueDate = dueDate
-        this.priority = priority
+        this.description = ""
+        this.dueDate = ""
+        this.priority = ""
         this.check = "open"
     }
 
     closeCheck(){
         this.check = "close"
+    }
+
+    addDescription(description){
+        this.description = description
+    }
+
+    addDueDate(dueDate){
+        this.dueDate = dueDate
+    }
+
+    addPriority(priority){
+        this.priority = priority
     }
 }
 
@@ -32,8 +44,8 @@ class project{
 }
 
 export const build = {
-    createTodo(title, description, dueDate, prirority,checklist){
-        return new todo(title, description, dueDate, prirority,checklist)
+    createTodo(title){
+        return new todo(title)
     },
     createProject(title){
         return new project(title)
