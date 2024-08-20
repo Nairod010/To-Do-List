@@ -7,6 +7,16 @@ class Elements{
         this.dialAddButton = document.querySelector("dialog .add")
         this.dialCloseButton = document.querySelector("dialog .close")
         this.input = document.querySelector("input")
+        this.navigation = document.querySelector("nav")
+    }
+    
+    createProject(name){
+        const newButton = document.createElement("button")
+        newButton.classList.add(`nav-project`)
+
+        newButton.textContent = `${name}`
+
+        this.navigation.appendChild(newButton)
     }
 }
 
@@ -24,9 +34,11 @@ export const display = {
         dom.dialAddButton.addEventListener("click", (e) => {
             e.preventDefault();
             const project = new Project(dom.input.value)
-            projectsList.push(project) 
+            projectsList.push(project)
+            dom.createProject(dom.input.value)
             console.log(projectsList)
             dom.dial.close()
+            dom.input.value = ""
         })
     },
     closeForm(){
