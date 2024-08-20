@@ -5,7 +5,7 @@ class Items{
 }
 
 
-export class Tasks extends Items{
+export class Task extends Items{
     constructor(title){
         super(title)
         this.dueDate = ""
