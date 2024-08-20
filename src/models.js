@@ -13,9 +13,8 @@ class todo{
 }
 
 class project{
-    constructor(title, dueDate){
+    constructor(title){
         this.title = title
-        this.dueDate = dueDate
         this.todoList = []
     }
 
@@ -36,8 +35,8 @@ export const build = {
     createTodo(title, description, dueDate, prirority,checklist){
         return new todo(title, description, dueDate, prirority,checklist)
     },
-    createProject(title, dueDate){
-        return new project(title, dueDate)
+    createProject(title){
+        return new project(title)
     }
 }
 

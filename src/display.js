@@ -6,10 +6,6 @@ export const display = {
         title.classList.add("project-title")
         title.textContent = project.title
 
-        const dueDate = document.createElement("div")
-        dueDate.classList.add("project-date")
-        dueDate.textContent = project.dueDate
-
         const todoContainer = document.createElement("div")
         todoContainer.classList.add("todo-container")
 
@@ -47,8 +43,9 @@ export const display = {
             todoContainer.appendChild(todo)
         }
 
+
+
         currentProject.appendChild(title)
-        currentProject.appendChild(dueDate)
         currentProject.appendChild(todoContainer)
     },
     fillNavigation(project){
@@ -59,7 +56,23 @@ export const display = {
         newProject.classList.add(`project-${project.title}`)        
 
         newProject.textContent = `${project.title}`
+
+        newProject.addEventListener("click", () =>{
+            const clear = document.querySelector(".current-project")
+            clear.textContent = ""
+            display.project(project)
+        })
         
         navbar.appendChild(newProject)
+    },
+    addingItems(project,todo){
+        const addButton = document.querySelector(".add")
+        addButton.addEventListener("click", () => {
+            console.log(project.title)
+            project.addToDo(todo)
+            const clear = document.querySelector(".current-project")
+            clear.textContent = ""
+            display.project(project)
+        })
     }
 }
