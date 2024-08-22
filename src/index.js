@@ -1,6 +1,4 @@
 import './styles.css';
-import { display } from './display';
+import { display } from './dispaly';
 
-display.addProject()
-display.closeForm()
-display.confirmProject()
+display()
