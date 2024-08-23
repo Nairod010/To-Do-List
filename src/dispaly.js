@@ -63,7 +63,9 @@ const helper = function(element, attribute, content) {
 
 const navBarItem = function(title) {
     const navbarItem = helper("button", "navbar", title)
-    const projectContainer = helper("div", "project-container", title)
+    const projectContainer = helper("div", "project-container", "")
+    const projecTitle = helper("p","project-container-name", title)
+    projectContainer.appendChild(projecTitle)
 
     projectContainer.addEventListener("click", projectView(projectContainer, title))
 
@@ -88,8 +90,23 @@ const projectView = function(parent, title) {
     confirmTask.addEventListener("click", () => {
         if (input.value !== "") {
             const newTask = helper("div", "task", input.value)
+            const taskChoseDate = helper("input", "date-picker", "No Data")
+            const taskDate = helper("p", "task-date", "")
             const removeTask = helper("button", "remove-task", "X")
             const todo = new Task 
+            
+            taskChoseDate.setAttribute("type", "date")
+            
+            taskChoseDate.addEventListener("change", () => {
+                const date = taskChoseDate.valueAsDate
+                todo.setDueDate(date)
+                taskDate.textContent = todo.dueDate
+                taskChoseDate.remove()
+                removeTask.remove()
+                parent.appendChild(taskDate)
+                parent.appendChild(removeTask)
+                console.log(projectList)
+            })
 
             const project = projectList.getProjectByTitle(title)
             todo.setTaskTitle(input.value)
@@ -97,11 +114,15 @@ const projectView = function(parent, title) {
             
             removeTask.addEventListener("click", () => {
                 removeTask.remove()
+                taskDate.remove()
+                taskChoseDate.remove()
                 newTask.remove()
                 project.removeTask(todo)
+                console.log(projectList)
             })
 
             parent.appendChild(newTask)
+            parent.appendChild(taskChoseDate)
             parent.appendChild(removeTask)
 
             input.value = ""
