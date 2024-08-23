@@ -1,4 +1,5 @@
 import './styles.css';
 import { display } from './dispaly';
 
-display()
+display.navbar()
+display.currentProject()

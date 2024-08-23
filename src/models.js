@@ -43,3 +43,31 @@ export class Project {
         return this.tasks
     }
 }
+
+export class ProjectsList{
+    constructor(){
+        this.list = []
+    }
+
+    addProject(project) {
+        this.list.push(project)
+    }
+
+    removeProject(project) {
+        for (var i = 0; i < this.project.length; i++) {
+            if (this.project[i].title === project.title) {
+                this.project.splice(i, 1)
+            }
+        }
+    }
+
+    getProjectByTitle(title){
+        const project = this.list.find(object => object.title === title)
+        return project
+    }
+
+    showProjects() {
+        return this.list
+    }
+     
+}

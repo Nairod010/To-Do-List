@@ -8,3 +8,14 @@ img {
   max-width: 100%;
 }
 
+.main-container{
+    background-color: #aaa;
+    min-height: 50vh;
+    min-width: 50vw;
+}
+
+.navbar{
+    background-color: #000;
+    color: white;
+}
+
