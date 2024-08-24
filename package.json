@@ -18,5 +18,8 @@
     "webpack-cli": "^4.0.0",
     "webpack-dev-server": "^4.15.2"
   },
-  "author": "Nairod010"
+  "author": "Nairod010",
+  "dependencies": {
+    "date-fns": "^3.6.0"
+  }
 }

@@ -32,7 +32,7 @@ export class Project {
     }
 
     removeTask(task) {
-        for (var i = 0; i < this.tasks.length; i++) {
+        for (let i = 0; i < this.tasks.length; i++) {
             if (this.tasks[i].title === task.title) {
                 this.tasks.splice(i, 1)
             }
@@ -54,7 +54,7 @@ export class ProjectsList{
     }
 
     removeProject(project) {
-        for (var i = 0; i < this.project.length; i++) {
+        for (let i = 0; i < this.project.length; i++) {
             if (this.project[i].title === project.title) {
                 this.project.splice(i, 1)
             }
@@ -68,6 +68,10 @@ export class ProjectsList{
 
     showProjects() {
         return this.list
+    }
+
+    setProjectList(list){
+        this.list = list
     }
      
 }

@@ -1,6 +1,25 @@
 import { ProjectsList, Project, Task } from "./models";
+import { format } from "date-fns";
 
-const projectList = new ProjectsList
+const projectListStored = localStorage.getItem("list")
+console.log(projectListStored)
+function settingList() {
+    if (projectListStored) {
+        const projectListFromStorage = JSON.parse(projectListStored)
+        console.log(projectListFromStorage)
+        const projectList = new ProjectsList
+        projectList.setProjectList(projectListFromStorage.list)
+        return projectList
+    } else {
+
+        return new ProjectsList
+    }
+}
+
+
+const projectList = settingList()
+//const projectList = new ProjectsList
+console.log(projectList)
 const container = document.querySelector(".main-container")
 const navbar = document.querySelector(".navbar")
 
@@ -17,7 +36,7 @@ export const display = function() {
             newProject.setProjectTitle(inputProjectTitle.value)
             projectList.addProject(newProject)
 
-            console.log(projectList)
+            localStorage.setItem("list", JSON.stringify(projectList))
 
             inputProjectTitle.remove()
             confirmButton.remove()
@@ -64,7 +83,7 @@ const helper = function(element, attribute, content) {
 const navBarItem = function(title) {
     const navbarItem = helper("button", "navbar", title)
     const projectContainer = helper("div", "project-container", "")
-    const projecTitle = helper("p","project-container-name", title)
+    const projecTitle = helper("p", "project-container-name", title)
     projectContainer.appendChild(projecTitle)
 
     projectContainer.addEventListener("click", projectView(projectContainer, title))
@@ -73,10 +92,12 @@ const navBarItem = function(title) {
         container.textContent = ""
 
         container.appendChild(projectContainer)
+        localStorage.setItem("list", JSON.stringify(projectList))
     })
 
     return navbarItem
 }
+
 
 const projectView = function(parent, title) {
     const addTask = helper("button", "add-task-button", "Add")
@@ -93,12 +114,12 @@ const projectView = function(parent, title) {
             const taskChoseDate = helper("input", "date-picker", "No Data")
             const taskDate = helper("p", "task-date", "")
             const removeTask = helper("button", "remove-task", "X")
-            const todo = new Task 
-            
+            const todo = new Task
+
             taskChoseDate.setAttribute("type", "date")
-            
+
             taskChoseDate.addEventListener("change", () => {
-                const date = taskChoseDate.valueAsDate
+                const date = format(taskChoseDate.valueAsDate, 'dd/MM/yyyy')
                 todo.setDueDate(date)
                 taskDate.textContent = todo.dueDate
                 taskChoseDate.remove()
@@ -106,12 +127,14 @@ const projectView = function(parent, title) {
                 parent.appendChild(taskDate)
                 parent.appendChild(removeTask)
                 console.log(projectList)
+
+                localStorage.setItem("list", JSON.stringify(projectList))
             })
 
             const project = projectList.getProjectByTitle(title)
             todo.setTaskTitle(input.value)
             project.addTask(todo)
-            
+
             removeTask.addEventListener("click", () => {
                 removeTask.remove()
                 taskDate.remove()
@@ -119,6 +142,7 @@ const projectView = function(parent, title) {
                 newTask.remove()
                 project.removeTask(todo)
                 console.log(projectList)
+                localStorage.setItem("list", JSON.stringify(projectList))
             })
 
             parent.appendChild(newTask)
