@@ -1,5 +1,5 @@
 import './styles.css';
-import { display } from './dispaly';
+import { render } from './app';
 
-
+render()
 

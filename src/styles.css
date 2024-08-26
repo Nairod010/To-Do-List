@@ -17,5 +17,9 @@ img {
 .navbar{
     background-color: #000;
     color: white;
+    padding: 10px;
 }
 
+.add-task{
+    margin: 10px;
+}

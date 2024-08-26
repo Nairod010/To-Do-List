@@ -2,6 +2,7 @@ export class Task {
     constructor() {
         this.title = ""
         this.dueDate = ""
+        this.hasProject = ""
     }
 
     setTaskTitle(title) {
@@ -14,6 +15,10 @@ export class Task {
 
     showTask() {
         return this.title, this.dueDate
+    }
+
+    setProject(project){
+        this.hasProject = project
     }
 }
 
@@ -44,7 +49,8 @@ export class Project {
     }
 }
 
-export class ProjectsList{
+
+export class ItemsList{
     constructor(){
         this.list = []
     }
@@ -53,10 +59,10 @@ export class ProjectsList{
         this.list.push(project)
     }
 
-    removeProject(project) {
-        for (let i = 0; i < this.project.length; i++) {
-            if (this.project[i].title === project.title) {
-                this.project.splice(i, 1)
+    removeProject(title) {
+        for (let i = 0; i < this.list.length; i++) {
+            if (this.list[i].title === title) {
+                this.list.splice(i, 1)
             }
         }
     }
@@ -75,3 +81,4 @@ export class ProjectsList{
     }
      
 }
+
