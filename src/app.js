@@ -34,10 +34,7 @@ function projectLoader() {
 function listingProjectButtonEvent() {
     const buttonsNode = document.querySelectorAll(".project-button")
 
-    buttonsNode.forEach(el => el.addEventListener("click", () => {
-        settingProjectProperties(el)
-    }))
-}
+    buttonsNode.forEach(el => settingProjectProperties(el))}
 
 function settingProjectProperties(item){
 
@@ -45,12 +42,14 @@ function settingProjectProperties(item){
         currentProjectTitle.textContent = item.textContent
         if(item.textContent !== "Default"){
             const currentProjectObject = projectsList.getProjectByTitle(item.textContent)
-            console.log(currentProjectObject.tasks) 
-            const { taskContainer, taskTitle, taskDate } = templateInterface.setTemporalProjectElement("test")
-            taskContainer.appendChild(taskTitle)
-            taskContainer.appendChild(taskDate)
 
-            mainContainer.appendChild(taskContainer)
+            console.log(currentProjectObject.tasks) 
+
+            //const { taskContainer, taskTitle, taskDate } = templateInterface.setTemporalProjectElement("test")
+            //taskContainer.appendChild(taskTitle)
+            //taskContainer.appendChild(taskDate)
+            //
+            //mainContainer.appendChild(taskContainer)
         }
     }) 
 }
