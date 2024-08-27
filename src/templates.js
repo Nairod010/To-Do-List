@@ -26,6 +26,15 @@ export const  templateInterface = {
 
         return {temporalContainer, input,confirmButton,cancelButton}
     },
+    setTemporalAddTaskElemenets(){
+        const temporalTaskContainer = helper("div", "temp-container", "")
+        const inputTask = helper("input", "input", "")
+        inputTask.value = ""
+        const confirmButtonTask = helper("button","confirm-button","Confirm")
+        const cancelButtonTask = helper("button","cancel-button","Cancel")
+
+        return {temporalTaskContainer, inputTask ,confirmButtonTask,cancelButtonTask}
+    },
     setPermanentElements(title){
         const newProject = helper("button", "project-button", `${title}`)
             
