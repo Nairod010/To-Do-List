@@ -35,6 +35,12 @@ function projectLoader() {
         const newProject = templateInterface.setPermanentElements(loaders[i].title)
         if(loaders[i].title !== "Default"){
             navbar.appendChild(newProject)
+        } else if(loaders[i].title === "Default"){
+            const tasksList = loaders[i].tasks
+            console.log(tasksList.length) 
+            for(let j = 0; j < tasksList.length; j++){
+                taskGetters(tasksList[j].title)
+            } 
         }
     }
 }
@@ -53,7 +59,10 @@ function addTaskButtonProperty(){
 function listingProjectButtonEvent() {
     const buttonsNode = document.querySelectorAll(".project-button")
 
-    buttonsNode.forEach(el => settingProjectProperties(el))}
+    buttonsNode.forEach(el => settingProjectProperties(el))
+}
+
+
 
 function settingProjectProperties(item){
 
