@@ -38,7 +38,6 @@ function projectLoader() {
             navbar.appendChild(newProject)
         } else if(loaders[i].title === "Default"){
             const tasksList = loaders[i].tasks
-            console.log(tasksList.length) 
             for(let j = 0; j < tasksList.length; j++){
                 taskGetters(tasksList[j].title, tasksList[j].dueDate)
                 
@@ -80,7 +79,6 @@ function settingProjectProperties(item){
         }
         if(currentProjectObject){
             const tasksList = currentProjectObject.tasks
-            console.log(tasksList.length) 
             for(let i = 0; i < tasksList.length; i++){
                 taskGetters(tasksList[i].title, tasksList[i].dueDate)
             } 
@@ -189,7 +187,6 @@ function confirmEvent() {
             projectsList.addProject(project)
             localStorage.setItem("projects", JSON.stringify(projectsList))
 
-            console.log(projectsList)
 
             const newProject = templateInterface.setPermanentElements(project.title)
 
