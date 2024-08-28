@@ -36,9 +36,9 @@ export class Project {
         this.tasks.push(task)
     }
 
-    removeTask(task) {
+    removeTask(taskTitle) {
         for (let i = 0; i < this.tasks.length; i++) {
-            if (this.tasks[i].title === task.title) {
+            if (this.tasks[i].title === taskTitle) {
                 this.tasks.splice(i, 1)
             }
         }

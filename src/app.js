@@ -88,12 +88,26 @@ function settingProjectProperties(item){
 }
 
 function taskGetters(title){
-    const { taskContainer, taskTitle, taskDate } = templateInterface.setTemporalProjectElement(title)
+    const { taskContainer, taskTitle, taskDate, taskRemove} = templateInterface.setTemporalProjectElement(title)
     taskContainer.appendChild(taskTitle)
     taskContainer.appendChild(taskDate)
+    taskContainer.appendChild(taskRemove)
     mainContainer.appendChild(taskContainer)
 
+    taskRemove.addEventListener("click", () => {
+        const project = currentProjectTitle.textContent
+        const task = taskTitle.textContent
+        removeingTasks(project,task)
+    })
 }
+
+function removeingTasks(title, task){ 
+    const selectedProject = projectsList.getProjectByTitle(title)
+    selectedProject.removeTask(task)
+
+    localStorage.setItem("projects", JSON.stringify(projectsList))
+}
+
 
 function projectButtonEvent() {
     newProjectButton.addEventListener("click", () => {

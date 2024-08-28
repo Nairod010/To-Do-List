@@ -44,12 +44,22 @@ export const  templateInterface = {
         const taskContainer = helper("div", "task-container","")
         const taskTitle = helper("p","task-title", `${title}`)
         const taskDate = helper("input", "task-date", "")
+        const taskRemove = helper("button", "remove-task", "remove")
         taskDate.setAttribute("type", "date")
+        
+        taskRemove.addEventListener("click", () => {
+            taskContainer.remove()
+            taskTitle.remove()
+            taskDate.remove()
+            taskRemove.remove()
+        })
+
 
         return {
             taskContainer,
             taskTitle,
-            taskDate
+            taskDate,
+            taskRemove
         }
     }
 }
