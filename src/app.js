@@ -40,7 +40,8 @@ function projectLoader() {
             const tasksList = loaders[i].tasks
             console.log(tasksList.length) 
             for(let j = 0; j < tasksList.length; j++){
-                taskGetters(tasksList[j].title)
+                taskGetters(tasksList[j].title, tasksList[j].dueDate)
+                
             } 
         }
     }
@@ -81,14 +82,14 @@ function settingProjectProperties(item){
             const tasksList = currentProjectObject.tasks
             console.log(tasksList.length) 
             for(let i = 0; i < tasksList.length; i++){
-                taskGetters(tasksList[i].title)
+                taskGetters(tasksList[i].title, tasksList[i].dueDate)
             } 
         }
 
     }) 
 }
 
-function taskGetters(title){
+function taskGetters(title, check=""){
     const { taskContainer, taskTitle, taskDate, taskRemove} = templateInterface.setTemporalProjectElement(title)
     taskContainer.appendChild(taskTitle)
     taskContainer.appendChild(taskDate)
@@ -105,7 +106,13 @@ function taskGetters(title){
         taskContainer.replaceChild(selectedTaskDate, taskDate) 
 
     })
+
+    if(check !== ""){
+        const selectedTaskDate = templateInterface.setDateReplacement(check)
+        taskContainer.replaceChild(selectedTaskDate, taskDate) 
+    }
 }
+
 
 function updateTaskDate(title, task, date){
     const selectedProject = projectsList.getProjectByTitle(title)
