@@ -71,7 +71,6 @@ function settingProjectProperties(item){
             const tasksList = currentProjectObject.tasks
             console.log(tasksList.length) 
             for(let i = 0; i < tasksList.length; i++){
-                console.log("111")
                 taskGetters(tasksList[i].title)
             } 
         }
@@ -107,9 +106,9 @@ function confirmTaskEvent(){
             
             if(reference.textContent !== "Default"){
                 currentProject.addTask(task)
+                taskGetters(task.title)
             } else {
                 if(!projectsList.getProjectByTitle("Default")){
-                    console.log(projectsList.getProjectByTitle("Default"))
                     const defaultProject = new Project
                     defaultProject.setProjectTitle("Default")
                     defaultProject.addTask(task)
@@ -118,7 +117,6 @@ function confirmTaskEvent(){
                 }else{
                     const defaultProject = projectsList.getProjectByTitle("Default")
                     defaultProject.addTask(task)
-                    console.log(defaultProject)
                     taskGetters(task.title)
                 }
             }
