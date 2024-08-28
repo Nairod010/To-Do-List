@@ -40,6 +40,11 @@ export const  templateInterface = {
             
         return newProject
     },
+    setDateReplacement(date){
+        const newTaskDate = helper("p","task-date-replaced",`${date}`)
+
+        return newTaskDate
+    },
     setTemporalProjectElement(title){
         const taskContainer = helper("div", "task-container","")
         const taskTitle = helper("p","task-title", `${title}`)

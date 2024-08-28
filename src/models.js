@@ -44,6 +44,14 @@ export class Project {
         }
     }
 
+    getTask(taskTitle){
+        for (let i = 0; i < this.tasks.length; i++) {
+            if (this.tasks[i].title === taskTitle) {
+                return this.tasks[i]
+            }
+        }
+    }
+
     showTasks() {
         return this.tasks
     }

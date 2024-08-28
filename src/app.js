@@ -1,5 +1,6 @@
 import { Task, Project, ItemsList } from "./models"
 import { templateInterface } from "./templates"
+import { format } from "date-fns"
 
 const { newProjectButton, defaultButton, navbar, mainContainer, addTaskButton, currentProjectTitle } = templateInterface.htmlElementGetter()
 const { temporalContainer, input, confirmButton, cancelButton } = templateInterface.setTemporalNavbarElements()
@@ -95,11 +96,26 @@ function taskGetters(title){
     mainContainer.appendChild(taskContainer)
 
     taskRemove.addEventListener("click", () => {
-        const project = currentProjectTitle.textContent
-        const task = taskTitle.textContent
-        removeingTasks(project,task)
+        removeingTasks(currentProjectTitle.textContent,taskTitle.textContent)
+    })
+
+    taskDate.addEventListener("change", () => {
+        updateTaskDate(currentProjectTitle.textContent,taskTitle.textContent,taskDate.value) 
+        const selectedTaskDate = templateInterface.setDateReplacement(format(new Date(taskDate.value), "dd-MM-yyyy"))
+        taskContainer.replaceChild(selectedTaskDate, taskDate) 
+
     })
 }
+
+function updateTaskDate(title, task, date){
+    const selectedProject = projectsList.getProjectByTitle(title)
+    const selectedTask = selectedProject.getTask(task)
+    
+    const makeDate = format(new Date(date), "dd-MM-yyyy")
+    selectedTask.setDueDate(makeDate)
+    localStorage.setItem("projects", JSON.stringify(projectsList))
+}
+
 
 function removeingTasks(title, task){ 
     const selectedProject = projectsList.getProjectByTitle(title)
